@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Checkbox } from '@chakra-ui/react';
 
-const CheckboxElement = ({ id, label, defaultValue }) => {
-  return <Checkbox id={id}>{label}</Checkbox>;
+import { FormContext } from '../../FormContext';
+
+const CheckboxElement = ({ id, label, value }) => {
+  const { handleChange } = useContext(FormContext);
+  return (
+    <Checkbox
+      id={id}
+      checked={value}
+      onChange={(event) => handleChange(id, event)}
+    >
+      {label}
+    </Checkbox>
+  );
 };
 
 export default CheckboxElement;

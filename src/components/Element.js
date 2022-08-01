@@ -4,7 +4,7 @@ import InputElement from './elements/InputElement';
 import CheckboxElement from './elements/CheckboxElement';
 
 const Element = ({
-  field: { id, label, type, required, placeholder, defaultValue },
+  field: { id, label, type, required, placeholder, value },
 }) => {
   switch (type) {
     case 'text':
@@ -15,13 +15,22 @@ const Element = ({
           type={type}
           required={required}
           placeholder={placeholder}
-          defaultValue={defaultValue}
+          value={value}
+        />
+      );
+    case 'email':
+      return (
+        <InputElement
+          id={id}
+          label={label}
+          type={type}
+          required={required}
+          placeholder={placeholder}
+          value={value}
         />
       );
     case 'checkbox':
-      return (
-        <CheckboxElement id={id} label={label} defaultValue={defaultValue} />
-      );
+      return <CheckboxElement id={id} label={label} value={value} />;
     default:
       return null;
   }

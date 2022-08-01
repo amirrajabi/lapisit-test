@@ -10,6 +10,10 @@ import formSchema from './api/formSchema.json';
 import Section from './components/Section';
 
 function App() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Submit');
+  };
   return (
     <Container>
       <FormControl>
@@ -18,7 +22,11 @@ function App() {
           <Divider />
           <Section schema={formSchema.sections} levelId={1} />
 
-          <Button colorScheme='teal' variant='solid'>
+          <Button
+            colorScheme='teal'
+            variant='solid'
+            onClick={(event) => handleSubmit(event)}
+          >
             Button
           </Button>
         </Stack>
