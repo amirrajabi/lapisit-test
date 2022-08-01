@@ -1,9 +1,30 @@
-import formSchema from './api/formSchema.json';
+import {
+  Container,
+  Stack,
+  FormControl,
+  Button,
+  Divider,
+} from '@chakra-ui/react';
 
-console.log(formSchema);
+import formSchema from './api/formSchema.json';
+import Section from './components/Section';
 
 function App() {
-  return <div className='App'>Test</div>;
+  return (
+    <Container>
+      <FormControl>
+        <Stack>
+          <Section schema={formSchema.sections} levelId={0} />
+          <Divider />
+          <Section schema={formSchema.sections} levelId={1} />
+
+          <Button colorScheme='teal' variant='solid'>
+            Button
+          </Button>
+        </Stack>
+      </FormControl>
+    </Container>
+  );
 }
 
 export default App;
