@@ -1,5 +1,10 @@
 import React, { useContext } from 'react';
-import { FormLabel, FormHelperText, Input } from '@chakra-ui/react';
+import {
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  Input,
+} from '@chakra-ui/react';
 
 import { FormContext } from '../../FormContext';
 
@@ -14,7 +19,7 @@ const InputElement = ({
   const { handleChange } = useContext(FormContext);
 
   return (
-    <>
+    <FormControl isRequired={required} pb={2}>
       <FormLabel>{label}</FormLabel>
       <Input
         id={id}
@@ -23,10 +28,8 @@ const InputElement = ({
         value={defaultValue}
         onChange={(event) => handleChange(id, event)}
       />
-      {required ? (
-        <FormHelperText>This field is required!</FormHelperText>
-      ) : null}
-    </>
+      {false ? <FormHelperText>Required!</FormHelperText> : null}
+    </FormControl>
   );
 };
 

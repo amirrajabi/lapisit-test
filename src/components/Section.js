@@ -4,19 +4,17 @@ import { Heading } from '@chakra-ui/react';
 import Element from './Element';
 import { FormContext } from '../FormContext';
 
-function Section({ schema, levelId }) {
+function Section({ schema, levelId, updateFielde }) {
   const [elements, setElements] = useState(null);
+  const { fields, label } = elements ?? {};
 
   useEffect(() => {
     setElements(schema[levelId]);
-    console.log(schema);
   }, [schema, levelId]);
 
-  const { fields, label } = elements ?? {};
-
-  const handleSubmit = () => {
-    console.log('Submit');
-  };
+  useEffect(() => {
+    updateFielde(fields ? fields : null);
+  }, [updateFielde, fields]);
 
   const handleChange = (idField, event) => {
     const newElements = { ...elements };
@@ -34,7 +32,6 @@ function Section({ schema, levelId }) {
       }
       setElements(newElements);
     });
-    console.log(elements);
   };
 
   return (
