@@ -14,7 +14,8 @@ const InputElement = ({
   type,
   required,
   placeholder,
-  defaultValue,
+  value,
+  saveData,
 }) => {
   const { handleChange } = useContext(FormContext);
 
@@ -25,10 +26,17 @@ const InputElement = ({
         id={id}
         type={type}
         placeholder={placeholder ? placeholder : ''}
-        value={defaultValue}
+        value={value}
+        defaultValue={saveData[id] !== null ? saveData[id] : null}
         onChange={(event) => handleChange(id, event)}
+        onBlur={(event) => handleChange(id, event)}
       />
-      {false ? <FormHelperText>Required!</FormHelperText> : null}
+
+      {saveData[id] === '' ? (
+        <FormHelperText color='red.400'>
+          This field is required!.
+        </FormHelperText>
+      ) : null}
     </FormControl>
   );
 };

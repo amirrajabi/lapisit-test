@@ -5,6 +5,7 @@ import CheckboxElement from './elements/CheckboxElement';
 
 const Element = ({
   field: { id, label, type, required, placeholder, value },
+  saveData,
 }) => {
   switch (type) {
     case 'text':
@@ -16,6 +17,7 @@ const Element = ({
           required={required}
           placeholder={placeholder}
           value={value}
+          saveData={saveData}
         />
       );
     case 'email':
@@ -27,6 +29,7 @@ const Element = ({
           required={required}
           placeholder={placeholder}
           value={value}
+          saveData={saveData}
         />
       );
     case 'checkbox':
